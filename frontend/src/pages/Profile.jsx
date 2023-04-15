@@ -21,8 +21,8 @@ const Profile = () => {
   }, [address, contract]);
 
   return (
-    <DisplayCampaigns 
-      title="All Campaigns"
+    <DisplayCampaigns
+      title="All Projects"
       isLoading={isLoading}
       campaigns={campaigns}
     />
