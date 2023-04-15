@@ -20,7 +20,7 @@ const CreateProject = () => {
   });
 
   const handleFormFieldChange = (fieldName, e) => {
-    setForm({ ...form, [fieldName]: e.targetAmount.value })
+    setForm({ ...form, [fieldName]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
@@ -29,7 +29,7 @@ const CreateProject = () => {
     checkIfImage(form.image, async (exists) => {
       if(exists) {
         setIsLoading(true)
-        await createProject({ ...form, targetAmount: ethers.utils.parseUnits(form.targetAmount, 18)})
+        await createProject({ ...form, target: ethers.utils.parseUnits(form.target, 18)})
         setIsLoading(false);
         navigate('/');
       } else {
