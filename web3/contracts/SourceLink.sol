@@ -50,4 +50,20 @@ contract SourceLink {
             project.amountCollected += amount;
         }
     }
+
+    function getSupporters(uint256 _projectId) public view returns (address[] memory, uint256[] memory) {
+        return (projects[_projectId].supporters, projects[_projectId].donations);
+    }
+
+    function getProjects() public view returns (Project[] memory) {
+        Project[] memory allProjects = new Project[](projectCount);
+
+        for (uint i = 0; i < projectCount; i++) {
+            Project storage item = projects[i];
+
+            allProjects[i] = item;
+        }
+
+        return allProjects;
+    }
 }
