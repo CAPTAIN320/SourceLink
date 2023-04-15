@@ -59,13 +59,18 @@ export const StateContextProvider = ({ children }) => {
   }
 
   const donate = async (pId, amount) => {
-    const data = await contract.call('donateToProject', pId, { value: ethers.utils.parseEther(amount)});
+    console.log("pId is",pId)
+    console.log("amount is",amount)
+    console.log("ether amount is",ethers.utils.parseEther(amount))
+    // const data = await contract.call('donateToProject', pId, { value: ethers.utils.parseEther(amount)});
+    const data = await contract.call('donateToProject', [pId], { value: ethers.utils.parseEther(amount)});
+
 
     return data;
   }
 
   const getSupporters = async (pId) => {
-    const donations = await contract.call('getSupporters', pId);
+    const donations = await contract.call('getSupporters', [pId]);
     const numberOfDonations = donations[0].length;
 
     const parsedDonations = [];
