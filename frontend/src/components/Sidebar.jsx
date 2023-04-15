@@ -5,6 +5,7 @@ import { RxDashboard, RxPerson } from "react-icons/rx";
 import { RiLogoutBoxRLine, RiProjectorLine, RiMoneyDollarCircleLine } from "react-icons/ri";
 import { BiMoneyWithdraw } from "react-icons/bi";
 
+// TODO: Move this to a constants file
 // import { navlinks } from '../constants';
 
 const navlinks = [
