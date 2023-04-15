@@ -646,7 +646,7 @@
     "@sentry/types" "5.30.0"
     tslib "^1.9.3"
 
-"@thirdweb-dev/contracts@^3":
+"@thirdweb-dev/contracts@^3.4.5":
   version "3.4.5"
   resolved "https://registry.npmjs.org/@thirdweb-dev/contracts/-/contracts-3.4.5.tgz"
   integrity sha512-HHiNBXlctfJOF0lRMHYuJP1dYczkoCua8Wqf/FkORISytaF4LYWkKdhIirwy8QWG2MNvzOyRwSekWf2y1diPsw==
@@ -1141,6 +1141,11 @@ diff@5.0.0:
   version "5.0.0"
   resolved "https://registry.npmjs.org/diff/-/diff-5.0.0.tgz"
   integrity sha512-/VTCrvm5Z0JGty/BWHljh+BAiw3IK+2j87NGMu8Nwc/f48WoDAC395uomO9ZD117ZOBaHmkX1oyLvkVM/aIT3w==
+
+dotenv@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz"
+  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
 
 elliptic@^6.5.2, elliptic@^6.5.4, elliptic@6.5.4:
   version "6.5.4"
