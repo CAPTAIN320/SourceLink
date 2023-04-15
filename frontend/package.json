@@ -1,25 +1,28 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "thirdweb-app",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "deploy": "yarn build && npx thirdweb@latest upload dist",
-    "lint": "next lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "yarn build && npx thirdweb@latest upload dist"
   },
   "dependencies": {
-    "@thirdweb-dev/react": "^3.11.7",
-    "@thirdweb-dev/sdk": "^3.10.10",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
+    "@thirdweb-dev/react": "^3.11.1",
+    "@thirdweb-dev/sdk": "^3.10.5",
+    "daisyui": "^2.51.5",
     "ethers": "^5.7.2",
-    "next": "13.3.0",
-    "postcss": "8.4.21",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.3.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^2",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.1",
+    "vite": "^3",
+    "vite-plugin-node-polyfills": "^0.7.0"
   }
 }
