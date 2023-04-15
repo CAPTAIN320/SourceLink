@@ -32,7 +32,7 @@ const ProjectDetails = () => {
           cta: '',
           img: ''
         },
-        channel: 'eip155:5:0xD8634C39BBFd4033c0d3289C4515275102423681', // your channel address
+        channel: 'eip155:5:0x3DbF98571a6188275Bc05d43661414D73cabF6F5', // your channel address
         env: 'staging'
       });
     } catch (err) {
