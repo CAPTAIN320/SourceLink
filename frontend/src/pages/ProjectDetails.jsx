@@ -6,7 +6,40 @@ import { useStateContext } from '../context';
 import { CountBox, CustomButton, Loader } from '../components';
 import { calculateBarPercentage, daysLeft } from '../utils';
 
+// Push protocol resources
+import * as PushAPI from "@pushprotocol/restapi";
+
+// Push protocol resources
+const PK = process.env.PK; // channel private key
+const Pkey = `0x${PK}`;
+const _signer = new ethers.Wallet(Pkey);
+
 const ProjectDetails = () => {
+  // Push protocol send notification
+  const sendNotification = async() => {
+    try {
+      const apiResponse = await PushAPI.payloads.sendNotification({
+        signer: _signer,
+        type: 1, // broadcast
+        identityType: 2, // direct payload
+        notification: {
+          title: `[SDK-TEST] notification TITLE:`,
+          body: `[sdk-test] notification BODY`
+        },
+        payload: {
+          title: `[sdk-test] payload title`,
+          body: `Thank you for your donation!`,
+          cta: '',
+          img: ''
+        },
+        channel: 'eip155:5:0xD8634C39BBFd4033c0d3289C4515275102423681', // your channel address
+        env: 'staging'
+      });
+    } catch (err) {
+      console.error('Error: ', err);
+    }
+  }
+
   const { state } = useLocation();
   const navigate = useNavigate();
   const { donate, getSupporters, contract, address } = useStateContext();
@@ -33,6 +66,7 @@ const ProjectDetails = () => {
     console.log("amount",amount);
 
     await donate(state.pId, amount);
+    sendNotification();
 
     navigate('/')
     setIsLoading(false);

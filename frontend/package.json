@@ -9,6 +9,7 @@
     "deploy": "yarn build && npx thirdweb@latest upload dist"
   },
   "dependencies": {
+    "@pushprotocol/restapi": "^1.2.2",
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
     "daisyui": "^2.51.5",
