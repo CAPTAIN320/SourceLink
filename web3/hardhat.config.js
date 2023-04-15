@@ -2,7 +2,7 @@
 module.exports = {
   solidity: {
     version: '0.8.9',
-    defaultNetwork: 'goerli',
+    defaultNetwork: 'mumbai',
     networks: {
       hardhat: {},
       goerli: {

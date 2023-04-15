@@ -8,6 +8,7 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract('0xC13B37B2d0F9A6417232A081F5b3b1aA21777728');
+  // const { contract } = useContract('0x03B650028612bc7bE93D8ECF753340e85adFdC16');
   // const { mutateAsync: createProject, isLoading } = useContractWrite(contract, 'createProject');
 
   const address = useAddress();
