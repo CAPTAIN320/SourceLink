@@ -1,9 +1,15 @@
-import Document from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class  MyDocument extends Document {
   render() {
     return (
-      <div>_document</div>
+      <Html>
+        <Head></Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
       )
   }
 }
