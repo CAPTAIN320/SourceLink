@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import FundCard from './FundCard';
 import { loader } from '../assets';
 
-const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
+const DisplayProjects = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (campaign) => {
@@ -13,7 +13,9 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
   return (
     <div>
-      <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">{title} ({campaigns.length})</h1>
+      <h1 className="font-epilogue font-semibold text-xl text-left">
+        {title} ({campaigns.length})
+      </h1>
 
       <div className="flex flex-wrap mt-[20px] gap-[26px]">
         {isLoading && (
@@ -21,8 +23,8 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
         )}
 
         {!isLoading && campaigns.length === 0 && (
-          <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
-            You have not created any campigns yet
+          <p className="font-epilogue font-semibold text-m leading-[30px]">
+            There are no projects. Please check back later.
           </p>
         )}
 
@@ -36,4 +38,4 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   )
 }
 
-export default DisplayCampaigns
+export default DisplayProjects

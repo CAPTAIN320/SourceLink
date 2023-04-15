@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
       <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] rounded-[100px]">
-        <input type="text" placeholder="Search for projects" className="flex w-full font-epilogue font-normal text-[14px] placeholder: outline-none" />
+        <input type="text" placeholder="  Search for projects" className="flex w-full font-epilogue font-normal text-l placeholder: outline-none" />
 
         <div className="w-[72px] h-full rounded-[20px] bg-primary flex justify-center items-center cursor-pointer">
           <img src={search} alt="search" className="w-[15px] h-[15px] object-contain text-primary-content"/>
@@ -75,7 +75,7 @@ const Navbar = () => {
             <CustomButton
               btnType="button"
               title={address ? 'Create a project' : 'Connect'}
-              styles={address ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content'}
+              styles={address ? 'bg-primary-focus' : 'bg-secondary'}
               handleClick={() => {
                 if(address) navigate('create-project')
                 else connect();
