@@ -61,7 +61,7 @@ export const StateContextProvider = ({ children }) => {
     return data;
   }
 
-  const getDonations = async (pId) => {
+  const getSupporters = async (pId) => {
     const donations = await contract.call('getSupporters', pId);
     const numberOfDonations = donations[0].length;
 
@@ -88,7 +88,7 @@ export const StateContextProvider = ({ children }) => {
         getProjects,
         getUserProjects,
         donate,
-        getDonations
+        getSupporters
       }}
     >
       {children}
