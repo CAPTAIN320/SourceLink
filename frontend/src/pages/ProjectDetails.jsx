@@ -44,8 +44,8 @@ const ProjectDetails = () => {
       <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
         <div className="flex-1 flex-col">
           <img src={state.image} alt="project" className="w-full h-[410px] object-cover rounded-xl"/>
-          <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
-            <div className="absolute h-full bg-[#4acd8d]" style={{ width: `${calculateBarPercentage(state.target, state.amountCollected)}%`, maxWidth: '100%'}}>
+          <div className="relative w-full h-[5px] bg-primary mt-2">
+            <div className="absolute h-full bg-primary" style={{ width: `${calculateBarPercentage(state.target, state.amountCollected)}%`, maxWidth: '100%'}}>
             </div>
           </div>
         </div>
@@ -94,8 +94,6 @@ const ProjectDetails = () => {
         </div>
 
         <div className="flex-1">
-          <h4 className="font-epilogue font-semibold text-[18px] uppercase">Fund</h4>
-
           <div className="mt-[20px] flex flex-col p-4 bg-secondary rounded-[10px]">
             <p className="font-epilogue fount-medium text-[20px] leading-[30px] text-center text-secondary-content">
               Fund the project
