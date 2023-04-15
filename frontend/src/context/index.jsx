@@ -7,13 +7,14 @@ import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-  const { contract } = useContract('0x82134fE055d3999400F1768C70Cc8C0dBF2e44e0');
-  const { mutateAsync: createProject } = useContractWrite(contract, 'createProject');
+  const { contract } = useContract('0xC13B37B2d0F9A6417232A081F5b3b1aA21777728');
+  const { mutateAsync: createProject, isLoading } = useContractWrite(contract, 'createProject');
 
   const address = useAddress();
   const connect = useMetamask();
 
   const publishProject = async (form) => {
+    console.log("Form is",form)
     try {
       const data = await createProject([
         address, // owner
@@ -23,7 +24,7 @@ export const StateContextProvider = ({ children }) => {
         new Date(form.deadline).getTime(), // deadline,
         form.image
       ])
-
+      console.log("Data is",data)
       console.log("contract call success", data)
     } catch (error) {
       console.log("contract call failure", error)
