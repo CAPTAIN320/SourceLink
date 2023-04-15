@@ -2,7 +2,7 @@
 module.exports = {
   solidity: {
     version: '0.8.9',
-    defaultNetwork: 'mumbai',
+    defaultNetwork: 'gnosis',
     networks: {
       hardhat: {},
       goerli: {
@@ -13,6 +13,10 @@ module.exports = {
         url: 'https://rpc.ankr.com/polygon_mumbai',
         accounts: [`0x${process.env.PRIVATE_KEY}`]
       },
+      gnosis: {
+        url: 'https://rpc.ankr.com/gnosis',
+        accounts: [`0x${process.env.PRIVATE_KEY}`]
+      }
     },
     settings: {
       optimizer: {
