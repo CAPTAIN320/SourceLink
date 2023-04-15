@@ -5,19 +5,19 @@ import { useStateContext } from '../context'
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [projects, setCampaigns] = useState([]);
+  const [projects, setProjects] = useState([]);
 
-  const { address, contract, getCampaigns } = useStateContext();
+  const { address, contract, getProjects } = useStateContext();
 
-  const fetchCampaigns = async () => {
+  const fetchProjects = async () => {
     setIsLoading(true);
-    const data = await getCampaigns();
-    setCampaigns(data);
+    const data = await getProjects();
+    setProjects(data);
     setIsLoading(false);
   }
 
   useEffect(() => {
-    if(contract) fetchCampaigns();
+    if(contract) fetchProjects();
   }, [address, contract]);
 
   return (

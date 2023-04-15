@@ -62,7 +62,7 @@ const CreateProject = () => {
             handleChange={(e) => handleFormFieldChange('name', e)}
           />
           <FormField
-            labelName="Campaign Title *"
+            labelName="Project Title *"
             placeholder="Write a title"
             inputType="text"
             value={form.title}
@@ -96,8 +96,8 @@ const CreateProject = () => {
         </div>
 
         <FormField
-            labelName="Campaign image *"
-            placeholder="Place image URL of your campaign"
+            labelName="Project image *"
+            placeholder="Place image URL of your project"
             inputType="url"
             value={form.image}
             handleChange={(e) => handleFormFieldChange('image', e)}

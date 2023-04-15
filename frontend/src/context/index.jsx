@@ -2,12 +2,12 @@ import React, { useContext, createContext } from 'react';
 
 import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
-// import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
+import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-  const { contract } = useContract('0xC13B37B2d0F9A6417232A081F5b3b1aA21777728');
+  const { contract } = useContract('0x82134fE055d3999400F1768C70Cc8C0dBF2e44e0');
   const { mutateAsync: createProject } = useContractWrite(contract, 'createProject');
 
   const address = useAddress();
@@ -19,7 +19,7 @@ export const StateContextProvider = ({ children }) => {
         address, // owner
         form.title, // title
         form.description, // description
-        form.target,
+        form.targetAmount,
         new Date(form.deadline).getTime(), // deadline,
         form.image
       ])
@@ -33,18 +33,18 @@ export const StateContextProvider = ({ children }) => {
   const getProjects = async () => {
     const projects = await contract.call('getProjects');
 
-    const parsedCampaings = projects.map((project, i) => ({
+    const parsedProjects = projects.map((project, i) => ({
       owner: project.owner,
       title: project.title,
       description: project.description,
-      target: ethers.utils.formatEther(project.target.toString()),
+      targetAmount: ethers.utils.formatEther(project.targetAmount.toString()),
       deadline: project.deadline.toNumber(),
       amountCollected: ethers.utils.formatEther(project.amountCollected.toString()),
       image: project.image,
       pId: i
     }));
 
-    return parsedCampaings;
+    return parsedProjects;
   }
 
   const getUserProjects = async () => {
