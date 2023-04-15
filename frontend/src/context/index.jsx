@@ -7,62 +7,84 @@ import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-  const { contract } = useContract('0xf59A1f8251864e1c5a6bD64020e3569be27e6AA9');
-  const { mutateAsync: createCampaign } = useContractWrite(contract, 'createCampaign');
+  const { contract } = useContract('0xC13B37B2d0F9A6417232A081F5b3b1aA21777728');
+  // const { mutateAsync: createProject, isLoading } = useContractWrite(contract, 'createProject');
 
   const address = useAddress();
   const connect = useMetamask();
 
-  const publishCampaign = async (form) => {
-    try {
-      const data = await createCampaign([
-        address, // owner
-        form.title, // title
-        form.description, // description
-        form.target,
-        new Date(form.deadline).getTime(), // deadline,
-        form.image
-      ])
+  // const createProject = async (_owner, _title, _description, _targetAmount, _deadline, _image) => {
+  //   try {
+  //     const tx = await contract.call("createProject", _owner, _title, _description, _targetAmount, _deadline, _image);
+  //     // handle success case
+  //   } catch (error) {
+  //     // handle error case
+  //   }
+  // }
 
+  // const createProject = async (form) => {
+  //   try {
+  //     const tx = await contract.call("createProject", _owner, _title, _description, _targetAmount, _deadline, _image);
+  //     // handle success case
+  //   } catch (error) {
+  //     // handle error case
+  //   }
+  // }
+
+
+  const publishProject = async (form) => {
+    console.log("Form is",form)
+    try {
+      const data = await contract.call("createProject",
+        [
+          address, // owner
+          form.title, // title
+          form.description, // description
+          form.targetAmount,
+          new Date(form.deadline).getTime(), // deadline,
+          form.image
+        ]
+      )
+      console.log("Data is",data)
       console.log("contract call success", data)
     } catch (error) {
       console.log("contract call failure", error)
     }
   }
 
-  const getCampaigns = async () => {
-    const campaigns = await contract.call('getCampaigns');
+  const getProjects = async () => {
+    const projects = await contract.call('getProjects');
 
-    const parsedCampaings = campaigns.map((campaign, i) => ({
-      owner: campaign.owner,
-      title: campaign.title,
-      description: campaign.description,
-      target: ethers.utils.formatEther(campaign.target.toString()),
-      deadline: campaign.deadline.toNumber(),
-      amountCollected: ethers.utils.formatEther(campaign.amountCollected.toString()),
-      image: campaign.image,
+    const parsedProjects = projects.map((project, i) => ({
+      owner: project.owner,
+      title: project.title,
+      description: project.description,
+      targetAmount: ethers.utils.formatEther(project.targetAmount.toString()),
+      deadline: project.deadline.toNumber(),
+      amountCollected: ethers.utils.formatEther(project.amountCollected.toString()),
+      image: project.image,
       pId: i
     }));
 
-    return parsedCampaings;
+    return parsedProjects;
   }
 
-  const getUserCampaigns = async () => {
-    const allCampaigns = await getCampaigns();
+  const getUserProjects = async () => {
+    const allProjects = await getProjects();
 
-    const filteredCampaigns = allCampaigns.filter((campaign) => campaign.owner === address);
+    const filteredProjects = allProjects.filter((project) => project.owner === address);
 
-    return filteredCampaigns;
+    return filteredProjects;
   }
 
   const donate = async (pId, amount) => {
-    const data = await contract.call('donateToCampaign', pId, { value: ethers.utils.parseEther(amount)});
+    const data = await contract.call('donateToProject', pId, { value: ethers.utils.parseEther(amount)});
 
     return data;
   }
 
-  const getDonations = async (pId) => {
-    const donations = await contract.call('getDonators', pId);
+  const getSupporters = async (pId) => {
+    const donations = await contract.call('getSupporters', pId);
     const numberOfDonations = donations[0].length;
 
     const parsedDonations = [];
@@ -80,15 +102,15 @@ export const StateContextProvider = ({ children }) => {
 
   return (
     <StateContext.Provider
-      value={{ 
+      value={{
         address,
         contract,
         connect,
-        createCampaign: publishCampaign,
-        getCampaigns,
-        getUserCampaigns,
+        createProject: publishProject,
+        getProjects,
+        getUserProjects,
         donate,
-        getDonations
+        getSupporters
       }}
     >
       {children}
