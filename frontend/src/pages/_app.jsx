@@ -1,9 +1,8 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "../styles/globals.css"
 
-import Sidebar from '@/components/Sidebar'
-import Navbar from '@/components/Navbar'
+import { Sidebar, Navbar } from '../components'
 
 import ProjectDetails  from './ProjectDetails'
 import CreateProject from './CreateProject'
@@ -18,7 +17,13 @@ const App = () => {
       </div>
       <div className='flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5'>
         <Navbar />
-        <Home />
+
+        {/* <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create-project" element={<CreateProject />} />
+          <Route path="/project-details/:id" element={<ProjectDetails />} />
+        </Routes> */}
       </div>
       App
     </div>
