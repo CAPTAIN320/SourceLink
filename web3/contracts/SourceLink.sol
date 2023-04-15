@@ -34,7 +34,7 @@ contract SourceLink {
         project.description = _description;
         project.targetAmount = _target;
         project.deadline = _deadline;
-        project.amountCollected = _amountCollected;
+        project.amountCollected = 0;
         project.image = _image;
 
         projectCount++;
