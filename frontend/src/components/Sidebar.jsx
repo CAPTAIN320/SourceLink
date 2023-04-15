@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { RxDashboard, RxPerson } from "react-icons/rx";
-import { RiLogoutBoxRLine, RiProjectorLine, RiMoneyDollarCircleLine } from "react-icons/ri";
-import { BiMoneyWithdraw } from "react-icons/bi";
+import { RiProjectorLine } from "react-icons/ri";
+
+const icon_size = 24;
 
 const navlinks = [
   {
-    name: "dashboard",
-    link: "/",
-    icon: <RxDashboard />,
+    name: "home",
+    link: "/Home",
+    icon: <RxDashboard size={icon_size}/>,
   },
   {
-    name: "project",
-    link: "/create-project",
-    icon: <RiProjectorLine />,
+    name: "create-project",
+    link: "/CreateProject",
+    icon: <RiProjectorLine size={icon_size}/>,
   },
   {
     name: "profile",
-    link: "/profile",
-    icon: <RxPerson />,
+    link: "/Profile",
+    icon: <RxPerson size={icon_size}/>,
   },
 ];
 
 const Icon = ({ styles, name, icon, isActive, disabled, handleClick }) => (
   <div
     className={`w-[48px] h-[48px] rounded-[10px] ${
-      isActive === name ? "bg-primary-content " : ""
+      isActive === name ? "bg-primary-content text-primary " : ""
     } flex justify-center items-center ${
-      disabled || isActive !== name ? "bg-primary" : ""
+      disabled || isActive !== name ? "bg-primary text-primary-content" : ""
     } cursor-pointer ${styles}`}
     onClick={handleClick}
   >
@@ -46,12 +48,15 @@ const Sidebar = () => {
     if (activeLink) {
       setIsActive(activeLink.name);
     } else {
-      setIsActive("dashboard"); // Set default active link
+      setIsActive(""); // Set default active link
     }
   }, [router.pathname]);
 
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh] w-full sm:w-auto sm:mx-4">
+      <Link href='/' className="text-xl font-bold text-primary">
+        SourceLink
+      </Link>
       <div className="flex-1 flex flex-col justify-between items-center bg-primary rounded-[20px] w-[76px] py-4 mt-12">
         <div className="flex flex-col justify-center items-center gap-3">
           {navlinks.map((link) => (
