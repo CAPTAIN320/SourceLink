@@ -14,13 +14,13 @@ const CreateProject = () => {
     name: '',
     title: '',
     description: '',
-    target: '',
+    targetAmount: '',
     deadline: '',
     image: ''
   });
 
   const handleFormFieldChange = (fieldName, e) => {
-    setForm({ ...form, [fieldName]: e.target.value })
+    setForm({ ...form, [fieldName]: e.targetAmount.value })
   }
 
   const handleSubmit = async (e) => {
@@ -29,7 +29,7 @@ const CreateProject = () => {
     checkIfImage(form.image, async (exists) => {
       if(exists) {
         setIsLoading(true)
-        await createProject({ ...form, target: ethers.utils.parseUnits(form.target, 18)})
+        await createProject({ ...form, targetAmount: ethers.utils.parseUnits(form.targetAmount, 18)})
         setIsLoading(false);
         navigate('/');
       } else {
@@ -56,7 +56,7 @@ const CreateProject = () => {
         <div className="flex flex-wrap gap-[40px]">
           <FormField
             labelName="Your Name *"
-            placeholder="John Doe"
+            placeholder="Vitalik Buterin"
             inputType="text"
             value={form.name}
             handleChange={(e) => handleFormFieldChange('name', e)}
@@ -83,8 +83,8 @@ const CreateProject = () => {
             labelName="Goal *"
             placeholder="ETH 0.50"
             inputType="text"
-            value={form.target}
-            handleChange={(e) => handleFormFieldChange('target', e)}
+            value={form.targetAmount}
+            handleChange={(e) => handleFormFieldChange('targetAmount', e)}
           />
           <FormField
             labelName="End Date *"
