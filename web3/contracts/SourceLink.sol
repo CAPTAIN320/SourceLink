@@ -28,6 +28,8 @@ contract SourceLink {
     ) public returns (uint256) {
         Project storage project = projects[projectCount];
 
+        require(project.deadline < block.timestamp, "Deadline must be in the future");
+
         project.owner = _owner;
         project.title = _title;
         project.description = _description;
