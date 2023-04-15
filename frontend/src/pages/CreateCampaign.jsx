@@ -7,10 +7,10 @@ import { money } from '../assets';
 import { CustomButton, FormField, Loader } from '../components';
 import { checkIfImage } from '../utils';
 
-const createProject = () => {
+const CreateCampaign = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { createProject } = useStateContext();
+  const { createCampaign } = useStateContext();
   const [form, setForm] = useState({
     name: '',
     title: '',
@@ -30,7 +30,7 @@ const createProject = () => {
     checkIfImage(form.image, async (exists) => {
       if(exists) {
         setIsLoading(true)
-        await createProject({ ...form, target: ethers.utils.parseUnits(form.target, 18)})
+        await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18)})
         setIsLoading(false);
         navigate('/');
       } else {
@@ -115,4 +115,4 @@ const createProject = () => {
   )
 }
 
-export default createProject
+export default CreateCampaign
