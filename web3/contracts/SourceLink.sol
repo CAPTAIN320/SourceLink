@@ -11,4 +11,28 @@ contract SourceLink {
         address[] suppporters;
         uint256[] donations;
     }
+
+    mapping(uint256 => Project) public projects;
+
+    uint256 public projectCount = 0;
+
+    function createProject(
+        address _owner,
+        string memory _title,
+        string memory _description,
+        uint256 _amountCollected,
+        string memory _image
+    ) public returns (uint256) {
+        Project storage project = projects[projectCount];
+
+        project.owner = _owner;
+        project.title = _title;
+        project.description = _description;
+        project.amountCollected = _amountCollected;
+        project.image = _image;
+
+        projectCount++;
+
+        return projectCount - 1;
+    }
 }
