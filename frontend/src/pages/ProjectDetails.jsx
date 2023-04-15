@@ -121,7 +121,7 @@ const ProjectDetails = () => {
 
               <CustomButton 
                 btnType="button"
-                title="Fund Campaign"
+                title="Fund Project"
                 styles="w-full bg-[#8c6dfd]"
                 handleClick={handleDonate}
               />
