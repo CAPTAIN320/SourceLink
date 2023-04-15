@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 
 import { useStateContext } from '../context';
-import { money } from '../assets';
 import { CustomButton, FormField, Loader } from '../components';
 import { checkIfImage } from '../utils';
 
@@ -49,6 +48,10 @@ const CreateProject = () => {
         </h1>
       </div>
 
+      <div className="flex justify-center items-center mb-2 mt-4 rounded-[10px] bg-primary">
+        <h4 className="font-epilogue font-bold text-2xl text-secondary-content">100% of the raised amount is Yours!</h4>
+      </div>
+
       <form onSubmit={handleSubmit} className="w-full mt-[65px] flex flex-col gap-[30px]">
         <div className="flex flex-wrap gap-[40px]">
           <FormField
@@ -74,11 +77,6 @@ const CreateProject = () => {
             value={form.description}
             handleChange={(e) => handleFormFieldChange('description', e)}
           />
-
-        <div className="w-full flex justify-start items-center p-4 bg-secondary h-[120px] rounded-[10px]">
-          <img src={money} alt="money" className="w-[40px] h-[40px] object-contain"/>
-          <h4 className="font-epilogue font-bold text-[25px] text-secondary-content ml-[20px]">You will get 100% of the raised amount</h4>
-        </div>
 
         <div className="flex flex-wrap gap-[40px]">
           <FormField
@@ -109,7 +107,7 @@ const CreateProject = () => {
             <CustomButton
               btnType="submit"
               title="Submit Project"
-              styles="bg-primary-focus text-2xl"
+              styles="bg-secondary-focus text-2xl"
             />
           </div>
       </form>

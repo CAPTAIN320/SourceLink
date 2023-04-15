@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useStateContext } from '../context';
 import { CustomButton } from './';
-import { logo, menu, search, thirdweb } from '../assets';
+import {  menu, search } from '../assets';
 import { navlinks } from '../constants';
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
         <CustomButton
           btnType="button"
           title={address ? 'Create a project' : 'Connect'}
-          styles={address ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content'}
+          styles={address ? 'bg-secondary-focus' : 'bg-primary-focus'}
           handleClick={() => {
             if(address) navigate('create-project')
             else connect()
@@ -75,7 +75,7 @@ const Navbar = () => {
             <CustomButton
               btnType="button"
               title={address ? 'Create a project' : 'Connect'}
-              styles={address ? 'bg-primary-focus' : 'bg-secondary'}
+              styles={address ? 'bg-secondary-focus' : 'bg-primary-focus'}
               handleClick={() => {
                 if(address) navigate('create-project')
                 else connect();
