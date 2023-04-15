@@ -8,7 +8,7 @@ contract SourceLink {
         string description;
         uint256 amountCollected;
         string image;
-        address[] suppporters;
+        address[] supporters;
         uint256[] donations;
     }
 
@@ -34,5 +34,20 @@ contract SourceLink {
         projectCount++;
 
         return projectCount - 1;
+    }
+
+    function donateToProject(uint256 _projectId) public payable {
+        uint256 amount = msg.value;
+
+        Project storage project = projects[_projectId];
+
+        project.supporters.push(msg.sender);
+        project.donations.push(amount);
+
+        (bool sent, ) = payable(project.owner).call{value: amount}("");
+
+        if(sent) {
+            project.amountCollected += amount;
+        }
     }
 }
