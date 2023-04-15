@@ -13,25 +13,6 @@ export const StateContextProvider = ({ children }) => {
   const address = useAddress();
   const connect = useMetamask();
 
-  // const createProject = async (_owner, _title, _description, _targetAmount, _deadline, _image) => {
-  //   try {
-  //     const tx = await contract.call("createProject", _owner, _title, _description, _targetAmount, _deadline, _image);
-  //     // handle success case
-  //   } catch (error) {
-  //     // handle error case
-  //   }
-  // }
-
-  // const createProject = async (form) => {
-  //   try {
-  //     const tx = await contract.call("createProject", _owner, _title, _description, _targetAmount, _deadline, _image);
-  //     // handle success case
-  //   } catch (error) {
-  //     // handle error case
-  //   }
-  // }
-
-
   const publishProject = async (form) => {
     console.log("Form is",form)
     try {
