@@ -22,9 +22,8 @@ contract SourceLink {
         address _owner,
         string memory _title,
         string memory _description,
-        uint256 _target,
+        uint256 _targetAmount,
         uint256 _deadline,
-        uint256 _amountCollected,
         string memory _image
     ) public returns (uint256) {
         Project storage project = projects[projectCount];
@@ -32,7 +31,7 @@ contract SourceLink {
         project.owner = _owner;
         project.title = _title;
         project.description = _description;
-        project.targetAmount = _target;
+        project.targetAmount = _targetAmount;
         project.deadline = _deadline;
         project.amountCollected = 0;
         project.image = _image;
