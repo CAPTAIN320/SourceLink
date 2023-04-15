@@ -27,9 +27,7 @@ const FundCard = ({ owner, title, description, targetAmount, deadline, amountCol
         </div>
 
         <div className="flex items-center mt-[20px] gap-[12px]">
-          <div className="w-[30px] h-[30px] rounded-full flex justify-center items-center bg-primary">
-          </div>
-          <p className="flex-1 font-epilogue font-normal text-[12px] text-primary-content truncate">by <span className="text-primary-content">{owner}</span></p>
+          <p className="flex-1 font-epilogue font-normal text-[12px] text-primary-content truncate"> Created by <span className="text-primary-content">{owner}</span></p>
         </div>
       </div>
     </div>
