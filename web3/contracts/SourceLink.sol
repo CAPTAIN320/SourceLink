@@ -6,6 +6,8 @@ contract SourceLink {
         address owner;
         string title;
         string description;
+        uint256 targetAmount;
+        uint256 deadline;
         uint256 amountCollected;
         string image;
         address[] supporters;
@@ -20,6 +22,8 @@ contract SourceLink {
         address _owner,
         string memory _title,
         string memory _description,
+        uint256 _target,
+        uint256 _deadline,
         uint256 _amountCollected,
         string memory _image
     ) public returns (uint256) {
@@ -28,6 +32,8 @@ contract SourceLink {
         project.owner = _owner;
         project.title = _title;
         project.description = _description;
+        project.targetAmount = _target;
+        project.deadline = _deadline;
         project.amountCollected = _amountCollected;
         project.image = _image;
 
